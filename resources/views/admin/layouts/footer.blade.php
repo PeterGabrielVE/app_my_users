@@ -23,7 +23,9 @@
             return false;
         }
         $(document).ready(function() {
-            $('.select-cargos').select2();
+            $('.select-cargos').select2({
+                placeholder: 'Selecciona un Cargo'
+            });
         });
         </script>
   </body>

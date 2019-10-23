@@ -24,8 +24,8 @@
 
                 <div class="panel-heading">
                 <div class="row">
-                            <div class="col-md-6 panel-title"><h2>Cargos</h2></div>
-                            <div class="col-md-6"><a href="{{ route('admin/cargos/crear') }}" class="btn btn-success ml-6"><i class="fa fa-plus-circle"></i>  Agregar
+                            <div class="col-md-10 panel-title"><h2>Cargos</h2></div>
+                            <div class="col-md-2"><a href="{{ route('admin/cargos/crear') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i>  Agregar
                             </a></div>
                 </div>
 
@@ -48,7 +48,7 @@
 
                                       <table class="table table-striped table-bordered table-hover">
                                         <thead>
-                                          <tr>
+                                          <tr class="bg-primary">
                                             <th>Nombre</th>
                                             <th>Descripción</th>
                                             <th>Acciones</th>
