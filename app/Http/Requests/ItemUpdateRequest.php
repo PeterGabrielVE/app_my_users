@@ -24,7 +24,7 @@ class ItemUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required||regex:/^[\pL\s\-]+$/u|max:100',
         ];
     }
 }

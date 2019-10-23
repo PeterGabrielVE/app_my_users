@@ -40,21 +40,30 @@
 						<label for="name" class="negrita">Nombre:</label>
 						<div>
 							<input class="form-control" placeholder="Ingrese Nombre" required="required" name="name" type="text" id="name">
-						</div>
+                            @if ($errors->has('name'))
+                            <small class="form-text text-danger">{{ $errors->first('name') }}</small>
+                            @endif
+                        </div>
 					</div>
 
 					<div class="form-group">
 						<label for="email" class="negrita">Correo:</label>
 						<div>
 							<input class="form-control" placeholder="Ingrese Correo Electronico" required="required" name="email" type="text" id="email">
-						</div>
+                            @if ($errors->has('correo'))
+                            <small class="form-text text-danger">{{ $errors->first('correo') }}</small>
+                            @endif
+                        </div>
 					</div>
 
 					<div class="form-group">
-						<label for="cedula" class="negrita">Cedula:</label>
+						<label for="cedula" class="negrita">Cédula:</label>
 						<div>
 							<input class="form-control" placeholder="Ingrese Cedula" required="required" name="cedula" type="text" id="cedula">
-						</div>
+                            @if ($errors->has('cedula'))
+                            <small class="form-text text-danger">{{ $errors->first('cedula') }}</small>
+                            @endif
+                        </div>
 					</div>
 
 					<div class="form-group">
