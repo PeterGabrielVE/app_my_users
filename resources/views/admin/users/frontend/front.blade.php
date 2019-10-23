@@ -85,8 +85,8 @@
 
 				@endif
 
-				<button type="submit" class="btn btn-info">Guardar</button>
-				<a href="{{ route('admin/users') }}" class="btn btn-warning">Cancelar</a>
+				<button type="submit" class="btn btn-info" title="Guardar"><i class="fas fa-save fa-3x"></i></button>
+				<a href="{{ route('admin/users') }}" class="btn btn-warning" title="Cancelar"><i class="fas fa-window-close fa-3x"></i></a>
 
 				<br>
 				<br>

@@ -28,9 +28,10 @@ class CargosController extends Controller
     {
         // Instancio al modelo cargos que hace llamado a la tabla 'cargos' de la Base de Datos
         $cargos = new Cargo;
-        dd($request->all());
+        //dd($request->all());
         // Recibo todos los datos del formulario de la vista 'crear.blade.php'
-
+        $cargos->name = $request->name;
+        $cargos->description = $request->description;
 
         // Inserto todos los datos en mi tabla 'cargos'
         $cargos->save();
@@ -45,7 +46,7 @@ class CargosController extends Controller
     // Leer Registros (Read)
     public function index()
     {
-        $cargos = Cargo::all();
+        $cargos = Cargo::paginate(10);
         return view('admin.cargos.index', compact('cargos'));
      }
 
@@ -61,32 +62,10 @@ class CargosController extends Controller
     public function update(EditarCargosRequest $request, $id)
     {
         // Recibo todos los datos desde el formulario Actualizar
-        dd($request->all());
+        //dd($request->all());
         $cargos = Cargo::find($id);
         $cargos->name = $request->name;
-        //$cargos->description = $request->description;
-
-        /*$get_all_files_array = "";
-
-        if(count($request->input('job_create_contractor_file_upload')) > 0 ) {
-
-           $all_files_array = array();
-
-
-            for ($i=0; $i < count($request->input('job_create_contractor_file_upload')); $i++)  {
-            $file = $request->input('job_create_contractor_file_upload')[$i];
-            $save_name = $file;
-
-            $jobs = new JobsModel();
-            $jobs->Jobs_Attachments = $save_name;
-
-
-            array_push($all_files_array, $save_name);
-            }
-
-            $get_all_files_array = implode(",", $all_files_array);
-
-        } */
+        $cargos->description = $request->description;
 
         // Actualizo los datos en la tabla 'cargos'
         $cargos->save();
