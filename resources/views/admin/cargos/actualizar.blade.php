@@ -56,7 +56,7 @@
 
             <div class="col-md-12">
 
-              <h1 style="font-size: 28px;" class=" text-center">CRUD USERS</h1>
+              <h1 style="font-size: 28px;" class=" text-center">CRUD CARGOS</h1>
 
               <div class="header">
             <div class="container">
@@ -64,7 +64,7 @@
                 <div class="col-md-5">
                     <!-- Logo -->
                     <div class="logo">
-                        <h1><a href="{{ route('admin/users') }}">Administrador</a></h1>
+                        <h1><a href="{{ route('admin/cargos') }}">Administrador</a></h1>
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -103,9 +103,6 @@
               <ul class="list-group">
 
                   <li class="list-group-item">
-                    <a href="{{ route('admin/users') }}">Usuarios</a>
-                  </li>
-                  <li class="list-group-item">
                     <a href="{{ route('admin/cargos') }}">Cargos</a>
                   </li>
                   <li class="list-group-item">
@@ -120,7 +117,9 @@
                   <li class="list-group-item">
                     Opción 4
                   </li>
-
+                  <li class="list-group-item">
+                    Opción 5
+                  </li>
 
               </ul>
             </div>
@@ -130,8 +129,8 @@
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin/users') }}">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+            <li class="breadcrumb-item"><a href="{{ route('admin/cargos') }}">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">cargos</li>
           </ol>
         </nav>
 
@@ -150,12 +149,12 @@
 
                     <section class="example mt-4">
 
-                      <form method="POST" action="{{ route('admin/users/update',$users->id) }}" role="form" enctype="multipart/form-data">
+                      <form method="POST" action="{{ route('admin/cargos/update',$cargos->id) }}" role="form" enctype="multipart/form-data">
 
                         <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                        @include('admin.users.frontend.front')
+                        @include('admin.cargos.frontend.front')
 
                       </form>
 
@@ -191,10 +190,5 @@
     <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
     <!-- Select2 JS -->
    <script type="text/javascript" src="{{ URL::asset('js/select2.min.js') }}"></script>
-   <script type="text/javascript">
-        $(document).ready(function() {
-            $('.select-cargos').select2();
-        });
-    </script>
   </body>
 </html>

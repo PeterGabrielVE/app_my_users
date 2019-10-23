@@ -29,7 +29,13 @@
                     <div class="form-group">
 						<label for="cargo" class="negrita">Seleccione cargo:</label>
 						<div>
-							<input class="form-control" placeholder="Ingrese cargo" required="required" name="cargo" type="text" id="cargo" value="{{ $users->cargo }}">
+                        <select class="select-cargos" name="cargo" id="cargo">
+                            <option value="{{$users->cargo}}">{{$users->cargo}}</option>
+                            @foreach($cargo as $c => $name)
+                                    <option value="{{$name}}">{{$name}}</option>
+                            @endforeach
+                         </select>
+
 						</div>
 					</div>
 
@@ -69,7 +75,11 @@
 					<div class="form-group">
 						<label for="cargo" class="negrita">Cargo:</label>
 						<div>
-							<input class="form-control" placeholder="Ingrese Cargo" required="required" name="cargo" type="text" id="cargo">
+                        <select class="select-cargos" name="cargo" id="cargo">
+                            @foreach($cargo as $c => $name)
+                                    <option value="{{$name}}">{{$name}}</option>
+                            @endforeach
+                         </select>
 						</div>
 					</div>
 

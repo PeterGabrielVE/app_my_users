@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ItemCreateRequest extends FormRequest
+class CrearCargosRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,7 @@ class ItemCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:1|max:100',
-            'email' => 'required|min:1|max:100',
-            'cedula' => 'required|unique:users|min:1|max:6',
+            'description' => 'required|min:1|max:100',
         ];
     }
 
@@ -38,15 +37,6 @@ class ItemCreateRequest extends FormRequest
             'name.max'        => 'El :attribute debe contener max 100 letras.',
             'name.regex'      => 'El :attribute debe contener solo letras.',
 
-            'email.required'  => 'El :attribute es obligatorio',
-            'email.min'       => 'El :attribute  debe contener mas de una letra.',
-            'email.max'       => 'El :attribute  debe contener max 100 letras.',
-
-            'cedula.required'  => 'La :attribute es obligatorio',
-            'cedula.unique'    => 'La :attribute ya está en uso, use otro :attribute',
-            'cedula.min'       => 'La :attribute  debe contener mas de un caracter.',
-            'cedula.max'       => 'La :attribute  debe contener max 6 caracteres.',
-
             'description.required'  => 'El :attribute es obligatorio',
             'description.min'       => 'El :attribute  debe contener mas de una letra.',
             'description.max'       => 'El :attribute  debe contener max 100 letras.',
@@ -57,9 +47,7 @@ class ItemCreateRequest extends FormRequest
     {
         return [
                 'name'        => 'nombre de usuario',
-                'email'         => 'correo electronico',
-                'cedula'        => 'cedula del usuario',
-                'cargo'         => 'cargo del usuario',
+                'description'   => 'descripcion del cargo',
 
             ];
     }

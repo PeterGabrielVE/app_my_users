@@ -54,7 +54,7 @@
 
             <div class="col-md-12">
 
-              <h1 style="font-size: 28px;" class=" text-center">CRUD USERS </h1>
+              <h1 style="font-size: 28px;" class=" text-center">CRUD CARGOS </h1>
 
               <div class="header">
          <div class="container">
@@ -62,7 +62,7 @@
                <div class="col-md-5">
                   <!-- Logo -->
                   <div class="logo">
-                     <h1><a href="{{ route('admin/users') }}">Administrador</a></h1>
+                     <h1><a href="{{ route('admin/cargos') }}">Administrador</a></h1>
                   </div>
                </div>
                <div class="col-md-5">
@@ -83,7 +83,7 @@
                   <div class="navbar navbar-inverse" role="banner">
                       <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                         <ul class="nav navbar-nav">
-                          <li><a href="{{ route('admin/users') }}">Administrador</a></li>
+                          <li><a href="{{ route('admin/cargos') }}">Administrador</a></li>
                         </ul>
                       </nav>
                   </div>
@@ -99,9 +99,8 @@
             <div class="sidebar content-box" style="display: block;">
 
               <ul class="list-group">
-
-                  <li class="list-group-item">
-                    <a href="{{ route('admin/users') }}">Usuarios</a>
+              <li class="list-group-item">
+                    <a href="{{ route('admin/users') }}">Users</a>
                   </li>
                   <li class="list-group-item">
                     <a href="{{ route('admin/cargos') }}">Cargos</a>
@@ -118,7 +117,9 @@
                   <li class="list-group-item">
                     Opción 4
                   </li>
-
+                  <li class="list-group-item">
+                    Opción 5
+                  </li>
 
               </ul>
             </div>
@@ -128,8 +129,8 @@
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin/users') }}">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+            <li class="breadcrumb-item"><a href="{{ route('admin/cargos') }}">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cargos</li>
           </ol>
         </nav>
 
@@ -140,7 +141,7 @@
               <div class="content-box-large">
 
                 <div class="panel-heading">
-                <div class="panel-title"><h2>Usuarios</h2></div>
+                <div class="panel-title"><h2>Cargos</h2></div>
 
               </div>
 
@@ -153,7 +154,7 @@
                   @endif
 
 
-                  <a href="{{ route('admin/users/crear') }}" class="btn btn-success mt-4 ml-3">  Agregar
+                  <a href="{{ route('admin/cargos/crear') }}" class="btn btn-success mt-4 ml-3">  Agregar
                   </a>
 
                                   <section class="example mt-4">
@@ -164,26 +165,22 @@
                                         <thead>
                                           <tr>
                                             <th>Nombre</th>
-                                            <th>Correo</th>
-                                            <th>Cedula</th>
-                                            <th>Cargo</th>
+                                            <th>Descripción</th>
                                             <th>Acciones</th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          @foreach($users as $user)
+                                          @foreach($cargos as $cargo)
                                           <tr>
-                                            <td class="v-align-middle">{{$user->name}}</td>
-                                            <td class="v-align-middle">{{$user->email}}</td>
-                                            <td class="v-align-middle">{{$user->cedula}}</td>
-                                            <td class="v-align-middle">{{$user->cargo}}</td>
+                                            <td class="v-align-middle">{{$cargo->name}}</td>
+                                            <td class="v-align-middle">{{$cargo->description}}</td>
                                             <td class="v-align-middle">
 
-                                              <form action="{{ route('admin/users/eliminar',$user->id) }}" method="POST" class="form-horizontal" role="form" onsubmit="return confirmarEliminar()">
+                                              <form action="{{ route('admin/cargos/eliminar',$cargo->id) }}" method="POST" class="form-horizontal" role="form" onsubmit="return confirmarEliminar()">
 
                                                 <input type="hidden" name="_method" value="PUT">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <a href="{{ route('admin/users/actualizar',$user->id) }}" class="btn btn-primary">Editar</a>
+                                                <a href="{{ route('admin/cargos/actualizar',$cargo->id) }}" class="btn btn-primary">Editar</a>
 
                                                 <button type="submit" class="btn btn-danger">Eliminar</button>
 

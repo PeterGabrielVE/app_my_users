@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Cargo;
 use Session;
 use Redirect;
 use App\Http\Requests;
@@ -20,7 +21,8 @@ class UsersController extends Controller
     public function crear()
     {
         $users = User::all();
-        return view('admin.users.crear', compact('users'));
+        $cargo = Cargo::pluck('name');
+        return view('admin.users.crear', compact('users'))->with('cargo', $cargo);
     }
 
     // Proceso de Creación de un Registro
@@ -57,7 +59,8 @@ class UsersController extends Controller
     public function actualizar($id)
     {
         $users = User::find($id);
-        return view('admin/users.actualizar',['users'=>$users]);
+        $cargo = Cargo::pluck('name');
+        return view('admin/users.actualizar',['users'=>$users])->with('cargo', $cargo);
     }
 
     // Proceso de Actualización de un Registro (Update)
