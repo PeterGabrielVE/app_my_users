@@ -9,14 +9,20 @@
 						<label for="name" class="negrita">Nombre:</label>
 						<div>
 							<input class="form-control" placeholder="Ingrese Nombre" required="required" name="name" type="text" id="name" value="{{ $cargos->name }}">
-						</div>
+                            @if ($errors->has('name'))
+                            <small class="form-text text-danger">{{ $errors->first('name') }}</small>
+                            @endif
+                        </div>
 					</div>
 
 					<div class="form-group">
 						<label for="email" class="negrita">Descripción:</label>
 						<div>
 							<input class="form-control" placeholder="Ingrese Descripción" required="required" name="description" type="text" id="description" value="{{ $cargos->description }}">
-						</div>
+                            @if ($errors->has('description'))
+                            <small class="form-text text-danger">{{ $errors->first('description') }}</small>
+                            @endif
+                        </div>
 					</div>
 
 					@else

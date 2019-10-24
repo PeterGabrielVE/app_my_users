@@ -14,6 +14,7 @@ use App\Http\Requests\ItemUpdateRequest;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Input;
+use Exception;
 
 class UsersController extends Controller
 {
@@ -28,6 +29,7 @@ class UsersController extends Controller
     // Proceso de Creación de un Registro
     public function store(ItemCreateRequest $request)
     {
+        try{
         // Instancio al modelo Usuarios que hace llamado a la tabla 'Users' de la Base de Datos
         $users = new User;
 
@@ -42,7 +44,11 @@ class UsersController extends Controller
 
         // Hago una redirección a la vista principal con un mensaje
         return redirect('admin/users')->with('message','Guardado Satisfactoriamente !');
-
+        }catch(Exception $exception){
+            report($exception);
+            return Redirect::to('admin/users')
+                ->with('message','Ocurrió un error inesperado al intentar procesar su solicitud.');
+        }
     }
 
 
@@ -66,6 +72,7 @@ class UsersController extends Controller
     // Proceso de Actualización de un Registro (Update)
     public function update(ItemUpdateRequest $request, $id)
     {
+        try{
         // Recibo todos los datos desde el formulario Actualizar
         $users = User::find($id);
         $users->name = $request->name;
@@ -79,11 +86,18 @@ class UsersController extends Controller
         // Muestro un mensaje y redirecciono a la vista principal
         Session::flash('message', 'Editado Satisfactoriamente !');
         return Redirect::to('admin/users');
+
+        }catch(Exception $exception){
+            report($exception);
+            return Redirect::to('admin/users')
+                ->with('message','Ocurrió un error inesperado al intentar procesar su solicitud.');
+        }
     }
 
     // Eliminar un Registro
     public function eliminar($id)
     {
+        try{
         // Indicamos el 'id' del registro que se va Eliminar
         $users = User::find($id);
 
@@ -94,5 +108,11 @@ class UsersController extends Controller
         // Muestro un mensaje y redirecciono a la vista principal
         Session::flash('message', 'Eliminado Satisfactoriamente !');
         return Redirect::to('admin/users');
+
+        }catch(Exception $exception){
+            report($exception);
+            return Redirect::to('admin/users')
+                ->with('message','Ocurrió un error inesperado al intentar procesar su solicitud.');
+        }
     }
 }

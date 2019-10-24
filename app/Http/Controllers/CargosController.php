@@ -13,6 +13,7 @@ use App\Http\Requests\EditarCargosRequest;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Input;
+use Exception;
 
 class CargosController extends Controller
 {
@@ -27,6 +28,7 @@ class CargosController extends Controller
     public function store(CrearCargosRequest $request)
     {
         // Instancio al modelo cargos que hace llamado a la tabla 'cargos' de la Base de Datos
+        try{
         $cargos = new Cargo;
         //dd($request->all());
         // Recibo todos los datos del formulario de la vista 'crear.blade.php'
@@ -37,8 +39,12 @@ class CargosController extends Controller
         $cargos->save();
 
         // Hago una redirección a la vista principal con un mensaje
-        return redirect('admin/cargos')->with('message','Guardado Satisfactoriamente !');
-
+        return redirect('admin/cargos')->with('message','¡Guardado Satisfactoriamente!');
+        }catch(Exception $exception){
+            report($exception);
+            return Redirect::to('admin/cargos')
+                ->with('message','Ocurrió un error inesperado al intentar procesar su solicitud.');
+        }
     }
 
 
@@ -61,6 +67,7 @@ class CargosController extends Controller
     // Proceso de Actualización de un Registro (Update)
     public function update(EditarCargosRequest $request, $id)
     {
+        try{
         // Recibo todos los datos desde el formulario Actualizar
         //dd($request->all());
         $cargos = Cargo::find($id);
@@ -73,20 +80,28 @@ class CargosController extends Controller
         // Muestro un mensaje y redirecciono a la vista principal
         Session::flash('message', 'Editado Satisfactoriamente !');
         return Redirect::to('admin/cargos');
+        }catch(Exception $exception){
+            report($exception);
+            return Redirect::to('admin/cargos')
+                ->with('message','Ocurrió un error inesperado al intentar procesar su solicitud.');
+        }
     }
 
     // Eliminar un Registro
     public function eliminar($id)
     {
+        try{
         // Indicamos el 'id' del registro que se va Eliminar
         $cargos = Cargo::find($id);
-
-
         // Elimino el registro de la tabla 'cargos'
         Cargo::destroy($id);
-
         // Muestro un mensaje y redirecciono a la vista principal
         Session::flash('message', 'Eliminado Satisfactoriamente !');
         return Redirect::to('admin/cargos');
+
+        }catch(Exception $exception){
+            return back()->withInput()
+            ->withErrors(['unexpected_error' => 'Ocurrió un error inesperado al intentar procesar su solicitud.']);
+        }
     }
 }

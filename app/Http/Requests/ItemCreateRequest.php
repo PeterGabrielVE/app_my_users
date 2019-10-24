@@ -46,10 +46,6 @@ class ItemCreateRequest extends FormRequest
             'cedula.unique'    => 'La :attribute ya está en uso, use otro :attribute',
             'cedula.min'       => 'La :attribute  debe contener mas de un caracter.',
             'cedula.max'       => 'La :attribute  debe contener max 6 caracteres.',
-
-            'description.required'  => 'El :attribute es obligatorio',
-            'description.min'       => 'El :attribute  debe contener mas de una letra.',
-            'description.max'       => 'El :attribute  debe contener max 100 letras.',
         ];
     }
 
